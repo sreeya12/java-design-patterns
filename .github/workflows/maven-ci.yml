@@ -61,5 +61,5 @@ jobs:
 
       - name: Build with Maven
         if: runner.os != 'Linux'
-        run: ./mvn clean verify
+        run: ./mvnw clean verify
 
