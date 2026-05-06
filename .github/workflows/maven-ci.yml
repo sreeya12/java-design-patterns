@@ -52,8 +52,14 @@ jobs:
         run: sudo apt-get install -y xvfb
 
       - name: Build with Maven and run SonarQube analysis
+        if: runner.os == 'Linux'  
         run: xvfb-run ./mvnw clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         env:
           # These two env variables are needed for sonar analysis
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: Build with Maven
+        if: runner.os != 'Linux'
+        run: ./mvn clean verify
+
