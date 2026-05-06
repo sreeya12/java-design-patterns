@@ -1,6 +1,7 @@
 name: Java PR Builder
 
 on:
+  workflow_dispatch: 
   pull_request_target:
     branches: [ master ]
     types: [ opened, reopened, synchronize ]
